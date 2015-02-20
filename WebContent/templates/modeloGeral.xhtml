@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:insert name="metadata" />
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Drogaria</title>
+	<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+
+	<p:growl id="msgGlobal" sticky="true" />
+	<p:layout fullPage="true">
+		<p:layoutUnit header="Sistema para Gerenciamento de Drogaria"
+			position="north" resizable="false" closable="false"
+			collapsible="false">
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" resizable="false" closable="false"
+			collapsible="false" size="250">
+			<h:form id="frmMnPrincipal">
+				<p:panelMenu id="pnlMnPrincipal">
+					<p:submenu label="Arquivo">
+						<p:menuitem value="Autenticação"
+							outcome="/pages/autenticacao.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.funcao == null}" />
+						<p:menuitem value="Principal" outcome="/pages/principal.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}" />
+						<p:menuitem value="Sair" action="#{autenticacaoBean.sair}"
+							rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}" />
+					</p:submenu>
+					<p:submenu label="Cadastro"
+						rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}">
+						<p:menuitem value="Fabricantes"
+							outcome="/pages/fabricantePesquisa.xhtml" />
+						<p:menuitem value="Produtos"
+							outcome="/pages/produtoPesquisa.xhtml" />
+						<p:menuitem value="Funcionários"
+							outcome="/pages/funcionarioPesquisa.xhtml"
+							rendered="#{autenticacaoBean.funcionarioLogado.funcao != 'Balconista'}" />
+					</p:submenu>
+					<p:submenu label="Vendas"
+						rendered="#{autenticacaoBean.funcionarioLogado.funcao != null}">
+						<p:menuitem value="Novo" outcome="/pages/vendaCadastro.xhtml" />
+						<p:menuitem value="Pesquisa" outcome="/pages/vendaPesquisa.xhtml" />
+
+					</p:submenu>
+				</p:panelMenu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center" resizable="false" closable="false"
+			collapsible="false">
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>
