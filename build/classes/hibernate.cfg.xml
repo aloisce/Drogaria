@@ -10,9 +10,9 @@
 
 		<!-- Configurações da coneção -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/db_drogaria</property>
-		<property name="connection.username">root</property>
-		<property name="connection.password">q1w2e3r4</property>
+		<property name="connection.url">jdbc:mysql://drogaria-alois.rhcloud.com:3306/db_drogaria</property>
+		<property name="connection.username">adminLLSLjtR</property>
+		<property name="connection.password">ib5AahvKypJP</property>
 
 		<!-- Pool de conexões JDBC -->
 		<property name="connection.pool_size">1</property>
